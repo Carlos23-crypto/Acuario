@@ -1,21 +1,16 @@
 <div class="main-page">
-    <!-- Contenedor superior transparente -->
-    <header class="transparent-header" #header>
-      <div class="header-content">
-        <!-- Imagen izquierda -->
-        <div class="header-image">
-          <img src="../../assets/LogoAQUA.jpg" alt="Logo" />
-        </div>
-        
-        <!-- Título central -->
-        <h1 class="header-title">Aqua Color Fest</h1>
-        
-        <!-- Botón que abre modal -->
-        <button class="modal-button" (click)="showModal = true">Abrir Modal</button>
+  <!-- Header -->
+  <header class="transparent-header" #header>
+    <div class="header-content">
+      <div class="header-image">
+        <img src="assets/LogoAQUA.jpg" alt="Logo" />
       </div>
-    </header>
-    
-   <!-- Carrusel mejorado -->
+      <h1 class="header-title">Aqua Color Fest</h1>
+      <a routerLink="/nueva-pagina" class="modal-button">Ver Precios</a>
+    </div>
+  </header>
+
+  <!-- Carrusel y otros elementos se mantienen igual -->
   <div class="carousel-container">
     <div class="carousel">
       <div *ngFor="let image of carouselImages; let i = index" 
@@ -41,13 +36,31 @@
   <div class="bottom-image-container">
     <img src="../../assets/Mapa.jpg" alt="Descripción de la imagen" class="bottom-image">
   </div>
+  <h1 class="MapTuri">Disponibilidad</h1>
+  <!-- Lista de Servicios -->
+  <div class="lista_contenedor">
+    <button *ngFor="let dato of datos; let i = index" 
+            class="lista" 
+            [style.--hover-color]="colors[i % colors.length]"
+            (click)="openServiceModal(dato)">
+      <img [src]="dato.imagen" alt="Imagen Servicio" />
+      <p>{{ dato.nombre }}</p>
+      <span class="price">{{ dato.precio }}</span>
+    </button>
+  </div>
 
-  <!-- Modal -->
-  <div *ngIf="showModal" class="modal-overlay" (click)="showModal = false">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <h2>Contenido del Modal</h2>
-      <p>Este es el contenido que aparece cuando haces clic en el botón.</p>
-      <button (click)="showModal = false">Cerrar</button>
+  <!-- Modal para Servicios -->
+  <div *ngIf="selectedService" class="service-modal-overlay" (click)="closeServiceModal()">
+    <div class="service-modal-content" (click)="$event.stopPropagation()">
+      <button class="close-modal" (click)="closeServiceModal()">×</button>
+      <h2>{{ selectedService.nombre }}</h2>
+      <img [src]="selectedService.imagen" alt="Imagen Servicio" class="modal-service-image">
+      <div class="service-details">
+        <p><strong>Precio:</strong> {{ selectedService.precio }}</p>
+        <p><strong>Descripción:</strong> {{ selectedService.descripcion || 'Servicio premium' }}</p>
+        <p><strong>Capacidad:</strong> {{ selectedService.capacidad || 'Variable' }}</p>
+      </div>
+      <button class="reserve-button">Reservar Ahora</button>
     </div>
   </div>
 </div>
