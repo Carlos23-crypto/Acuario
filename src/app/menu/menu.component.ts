@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -29,10 +29,22 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.stopAutoSlide();
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    const header = document.querySelector('.transparent-header');
+    if (header) { // Verificación de null
+      if (window.scrollY > 50) {
+        header.classList.add('header-scroll');
+      } else {
+        header.classList.remove('header-scroll');
+      }
+    }
+  }
+
   startAutoSlide() {
     this.intervalId = setInterval(() => {
       this.nextSlide();
-    }, 3000); // Cambia cada 3 segundos
+    }, 3000);
   }
 
   stopAutoSlide() {

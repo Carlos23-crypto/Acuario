@@ -1,14 +1,14 @@
 <div class="main-page">
     <!-- Contenedor superior transparente -->
-    <header class="transparent-header">
+    <header class="transparent-header" #header>
       <div class="header-content">
         <!-- Imagen izquierda -->
         <div class="header-image">
-          <img src="../../assets/Mapa.jpg" alt="Logo" />
+          <img src="../../assets/LogoAQUA.jpg" alt="Logo" />
         </div>
         
         <!-- Título central -->
-        <h1 class="header-title">Mi Página Principal</h1>
+        <h1 class="header-title">Aqua Color Fest</h1>
         
         <!-- Botón que abre modal -->
         <button class="modal-button" (click)="showModal = true">Abrir Modal</button>
@@ -36,9 +36,18 @@
             (click)="goToSlide(i)"></span>
     </div>
   </div>
+  <h1 class="MapTuri">Mapa </h1>
+  <!-- Imagen debajo del carrusel -->
+  <div class="bottom-image-container">
+    <img src="../../assets/Mapa.jpg" alt="Descripción de la imagen" class="bottom-image">
+  </div>
 
-  <!-- Modal (manteniendo tu estructura original) -->
-  <div *ngIf="showModal" class="modal-overlay">
-    <!-- ... tu modal existente ... -->
+  <!-- Modal -->
+  <div *ngIf="showModal" class="modal-overlay" (click)="showModal = false">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h2>Contenido del Modal</h2>
+      <p>Este es el contenido que aparece cuando haces clic en el botón.</p>
+      <button (click)="showModal = false">Cerrar</button>
+    </div>
   </div>
 </div>
