@@ -1,27 +1,26 @@
-
 body {
     margin: 0;
     height: 100vh;
-    animation: changeBackground 10s infinite;
+    animation: changeBackground 10s infinite alternate;
 }
 
 @keyframes changeBackground {
     0% {
-        background-color: #40cdf0;
+        background-color: #40cdf0; /* Azul - Agua y frescura */
     }
     20% {
-        background-color: #1f7de9;
+        background-color: #32CD32; /* Verde - Energía y naturaleza */
     }
     40% {
-        background-color: #3165f3;
+        background-color: #FF1493; /* Rosa/Fucsia - Vibrante y divertido */
     }
     60% {
-        background-color: #17a1c4;
+        background-color: #FF8C00; /* Naranja - Emoción y alegría */
     }
     80% {
-        background-color: #55a9f8;
+        background-color: #FFD700; /* Amarillo - Luz y optimismo */
     }
     100% {
-        background-color: #071ff1;
+        background-color: #800080; /* Morado - Magia y creatividad */
     }
 }

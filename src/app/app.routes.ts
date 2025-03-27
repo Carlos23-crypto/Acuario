@@ -7,4 +7,5 @@ export const routes: Routes = [
     { path: 'app', component: AppComponent },
     { path: 'login', component: LoginComponent },
     { path: 'menu', component: MenuComponent }, 
+    { path: '**', redirectTo: 'menu', pathMatch: 'full' },
 ];

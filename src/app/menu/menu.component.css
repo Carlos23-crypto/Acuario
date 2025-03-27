@@ -1,0 +1,163 @@
+.main-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Contenedor superior transparente */
+  .transparent-header {
+    background-color: rgba(255, 255, 255, 0.2); /* Ajusta la transparencia aquí */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque para mejor legibilidad */
+    padding: 1rem;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .header-image img {
+    height: 60px; /* Ajusta según necesites */
+    width: auto;
+  }
+  
+  .header-title {
+    margin: 0;
+    color: #333;
+    font-size: 1.8rem;
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .modal-button {
+    padding: 0.5rem 1rem;
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .modal-button:hover {
+    background-color: #3a5a8f;
+  }
+  
+ /* Estilos del carrusel mejorado */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    overflow: hidden;
+    height: 70vh; /* Más grande que antes */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  .carousel {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .slide.active {
+    opacity: 1;
+  }
+  
+  /* Controles del carrusel */
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    color: #333;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.3s;
+  }
+  
+  .carousel-control:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  
+  .prev {
+    left: 20px;
+  }
+  
+  .next {
+    right: 20px;
+  }
+  
+  /* Indicadores */
+  .indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
+  
+  .indicators span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .indicators span.active {
+    background: white;
+    transform: scale(1.2);
+  }
+  
+  /* Efecto hover en indicadores */
+  .indicators span:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .carousel-container {
+      height: 50vh;
+    }
+    
+    .carousel-control {
+      font-size: 1.5rem;
+      padding: 0.3rem 0.8rem;
+    }
+    
+    .indicators span {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .carousel-container {
+      height: 40vh;
+    }
+  }
