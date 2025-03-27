@@ -1,1 +1,27 @@
 
+body {
+    margin: 0;
+    height: 100vh;
+    animation: changeBackground 10s infinite;
+}
+
+@keyframes changeBackground {
+    0% {
+        background-color: #40cdf0;
+    }
+    20% {
+        background-color: #1f7de9;
+    }
+    40% {
+        background-color: #3165f3;
+    }
+    60% {
+        background-color: #17a1c4;
+    }
+    80% {
+        background-color: #55a9f8;
+    }
+    100% {
+        background-color: #071ff1;
+    }
+}
