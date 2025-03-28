@@ -1,1 +1,73 @@
-<p>formulario works!</p>
+<div class="form-container">
+    <!-- Formulario del Cliente -->
+    <div *ngIf="!primerFormularioCompletado" class="form-section">
+      <h2>Datos del Cliente</h2>
+      <form (ngSubmit)="continuarACompra()" #clienteForm="ngForm">
+        <input [(ngModel)]="cliente.nombre" name="nombre" placeholder="Nombre" required>
+        <input [(ngModel)]="cliente.apellidos" name="apellidos" placeholder="Apellidos" required>
+        <input [(ngModel)]="cliente.edad" name="edad" type="number" placeholder="Edad" min="1" required>
+        <select [(ngModel)]="cliente.sexo" name="sexo" required>
+          <option value="">Selecciona sexo</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+        <button type="submit" [disabled]="!validarPrimerFormulario()">Continuar a Compra</button>
+      </form>
+    </div>
+  
+    <!-- Formulario de Compra -->
+    <div *ngIf="primerFormularioCompletado && !codigoReserva" class="form-section">
+      <h2>Detalles de la Compra</h2>
+      <div *ngFor="let servicio of servicios" class="servicio-item">
+        <label>{{ servicio.nombre }} - ${{ servicio.precio }}</label>
+        <input [(ngModel)]="servicio.cantidad" type="number" min="0" placeholder="0">
+      </div>
+      <button (click)="generarResumen()">Generar Resumen</button>
+    </div>
+  
+    <!-- Resumen de Compra -->
+    <div [hidden]="!codigoReserva" class="resumen-section" #resumenCompra>
+      <div id="resumen-compra">
+        <h2>Resumen de Reserva</h2>
+        <div class="cliente-info">
+          <p><strong>Nombre:</strong> {{ cliente.nombre }} {{ cliente.apellidos }}</p>
+          <p><strong>Edad:</strong> {{ cliente.edad }}</p>
+          <p><strong>Sexo:</strong> {{ cliente.sexo }}</p>
+        </div>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>Servicio</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let servicio of servicios">
+              <tr *ngIf="servicio.cantidad > 0">
+                <td>{{ servicio.nombre }}</td>
+                <td>{{ servicio.cantidad }}</td>
+                <td>${{ servicio.precio }}</td>
+                <td>${{ servicio.precio * servicio.cantidad }}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+        <!--Total-->
+        <div class="total-section" *ngIf="mostrarResumen">
+            <h3>Total General: ${{ totalGeneral }}</h3>
+          </div>
+
+        <!-- Sección QR -->
+        <div class="qr-section">
+          <h3>Código de Reserva: {{ codigoReserva }}</h3>
+          <canvas id="qr-code"></canvas>
+        </div>
+      </div>
+  
+      <!-- Botón para generar PDF -->
+      <button (click)="generarPDF()">Descargar PDF</button>
+    </div>
+  </div>
