@@ -85,23 +85,17 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   datos: Service[] = [
     {
+      nombre: 'Mesas',
+      imagen: 'assets/Mesas.jpg',
+      precio: '$100',
+      descripcion: 'Mesas para zona de Camping'
+    },
+    {
       nombre: 'Espacio para casa de campaña por noche',
-      imagen: 'assets/CasasAcampar.jpg',
+      imagen: 'assets/Camping.jpg',
       precio: '$350',
       descripcion: 'Espacio designado para instalar tu propia casa de campaña',
       capacidad: '4x4 metros'
-    },
-    {
-      nombre: 'Renta de casa de campaña para 4 personas',
-      imagen: 'assets/Cabania4Per.jpg',
-      precio: '$150',
-      descripcion: 'Casa de campaña equipada para 4 personas'
-    },
-    {
-      nombre: 'Renta de casa de campaña para 8 personas',
-      imagen: 'assets/Cabania6Per.jpg',
-      precio: '$180',
-      descripcion: 'Casa de campaña equipada para 8 personas'
     },
     {
       nombre: 'Renta de casa de campaña para 12 personas',
@@ -116,28 +110,41 @@ export class MenuComponent implements OnInit, OnDestroy {
       descripcion: 'Cabaña completamente equipada con capacidad para 4 personas'
     },
     {
+      nombre: 'Sillas',
+      imagen: 'assets/Sillas.jpg',
+      precio: '$50',
+      descripcion: 'Sillas para zona de Camping'
+    },
+    {
       nombre: 'Cabaña para 6 personas',
       imagen: 'assets/Cabania6Per.jpg',
       precio: '$3000',
       descripcion: 'Cabaña completamente equipada con capacidad para 6 personas'
     },
     {
-      nombre: 'Silla',
-      imagen: 'assets/Asadores.jpg',
-      precio: '$30',
-      descripcion: 'Renta de silla individual'
-    },
-    {
-      nombre: 'Mesa',
-      imagen: 'assets/Asadores.jpg',
-      precio: '$50',
-      descripcion: 'Renta de mesa para 6 personas'
-    },
-    {
       nombre: 'Sombrilla',
-      imagen: 'assets/Asadores.jpg',
+      imagen: 'assets/Sombrilla.jpg',
       precio: '$50',
       descripcion: 'Renta de sombrilla grande'
+    },
+    {
+      nombre: 'Asadores',
+      imagen: 'assets/Asadores.jpg',
+      precio: '$350',
+      descripcion: 'Renta de Asafores grandes'
+    },
+    {
+      nombre: 'Regaderas',
+      imagen: 'assets/Regaderas.jpg',
+      precio: '$100 o Gratis en la compra de 2 entradas',
+      descripcion: 'Renta y uso de Regaderas Personales'
+    },
+    
+    {
+      nombre: 'Entrada AQUA COLOR FEST',
+      imagen: 'assets/LogoAQUA.jpg',
+      precio: '$899',
+      descripcion: 'Acceso al festival de Musica Electronica (18 años en adelante)'
     },
     {
       nombre: 'Entrada Adulto',
@@ -151,12 +158,6 @@ export class MenuComponent implements OnInit, OnDestroy {
       precio: '$120',
       descripcion: 'Entrada al parque para niños (3-12 años)'
     },
-    {
-      nombre: 'Entrada AQUA COLOR FEST',
-      imagen: 'assets/LogoAQUA.jpg',
-      precio: '$899',
-      descripcion: 'Acceso al festival de Musica Electronica (18 años en adelante)'
-    }
   ];
   //Fin
   
@@ -168,5 +169,9 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   closeServiceModal() {
     this.selectedService = null;
+  }
+
+  IrFormulario() {
+    window.location.href = '/formulario'; 
   }
 }

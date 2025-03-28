@@ -6,7 +6,6 @@
         <img src="assets/LogoAQUA.jpg" alt="Logo" />
       </div>
       <h1 class="header-title">Aqua Color Fest</h1>
-      <a routerLink="/nueva-pagina" class="modal-button">Ver Precios</a>
     </div>
   </header>
 
@@ -60,7 +59,7 @@
         <p><strong>Descripción:</strong> {{ selectedService.descripcion || 'Servicio premium' }}</p>
         <p><strong>Capacidad:</strong> {{ selectedService.capacidad || 'Variable' }}</p>
       </div>
-      <button class="reserve-button">Reservar Ahora</button>
+      <button class="reserve-button" (click)="IrFormulario()">Reservar Ahora</button>
     </div>
   </div>
 </div>
